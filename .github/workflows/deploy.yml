@@ -27,7 +27,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AKIASNVQCIYVAD5F2R7X }}
           aws-secret-access-key: ${{ secrets.cE9lxOUpgoYa3kjOwSrrnRdrjbuCcOontm31vOmr }}
-          aws-region: ${{ secrets.eu-west-1 }}
+          aws-region: eu-west-1
 
       # 4️⃣ Terraform init
       - name: Terraform Init
