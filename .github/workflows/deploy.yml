@@ -28,8 +28,16 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
+      - name: Delete bucket if exists (via AWS CLI)
+        run: |
+          if aws s3api head-bucket --bucket skander-portfolio-bucket2026 2>/dev/null; then
+            echo "Bucket exists, deleting..."
+            aws s3 rm s3://skander-portfolio-bucket2026 --recursive || true
+            aws s3api delete-bucket --bucket skander-portfolio-bucket2026 || true
+            echo "Bucket deleted successfully"
+          else
+            echo "Bucket does not exist, skipping deletion"
+          fi
         continue-on-error: true
 
       - name: Terraform Apply
