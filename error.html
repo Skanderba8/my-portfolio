@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --bg-primary: #0a0e27;
+        --bg-secondary: #151934;
+        --accent-primary: #00d4ff;
+        --accent-secondary: #7c3aed;
+        --text-primary: #e2e8f0;
+        --text-secondary: #94a3b8;
+        --gradient: linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%);
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        background-color: var(--bg-primary);
+        color: var(--text-primary);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: var(--gradient);
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.15;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: pulse 8s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.1);
+        }
+      }
+
+      .error-container {
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+        z-index: 1;
+        max-width: 600px;
+      }
+
+      .error-code {
+        font-size: 10rem;
+        font-weight: 700;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1;
+        margin-bottom: 1rem;
+        animation: glitch 3s infinite;
+      }
+
+      @keyframes glitch {
+        0%,
+        100% {
+          transform: translate(0);
+        }
+        20% {
+          transform: translate(-2px, 2px);
+        }
+        40% {
+          transform: translate(-2px, -2px);
+        }
+        60% {
+          transform: translate(2px, 2px);
+        }
+        80% {
+          transform: translate(2px, -2px);
+        }
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        line-height: 1.6;
+      }
+
+      .btn-home {
+        display: inline-block;
+        padding: 1rem 2.5rem;
+        background: var(--gradient);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: all 0.3s;
+      }
+
+      .btn-home:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(0, 212, 255, 0.4);
+      }
+
+      .error-icon {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 2rem;
+        position: relative;
+      }
+
+      .cloud {
+        width: 100%;
+        height: 100%;
+        background: var(--bg-secondary);
+        border-radius: 50%;
+        position: relative;
+        border: 3px solid rgba(0, 212, 255, 0.3);
+        animation: float 4s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .cloud::before,
+      .cloud::after {
+        content: "";
+        position: absolute;
+        background: var(--bg-secondary);
+        border-radius: 50%;
+        border: 3px solid rgba(0, 212, 255, 0.3);
+      }
+
+      .cloud::before {
+        width: 70%;
+        height: 70%;
+        top: -20%;
+        left: -10%;
+      }
+
+      .cloud::after {
+        width: 80%;
+        height: 80%;
+        top: -15%;
+        right: -15%;
+      }
+
+      .cloud-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 3rem;
+        z-index: 1;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .links {
+        margin-top: 3rem;
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .links a {
+        color: var(--accent-primary);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .links a:hover {
+        color: var(--text-primary);
+      }
+
+      @media (max-width: 768px) {
+        .error-code {
+          font-size: 6rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        p {
+          font-size: 1rem;
+        }
+
+        .error-icon {
+          width: 150px;
+          height: 150px;
+        }
+
+        .cloud-text {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="error-container">
+      <div class="error-icon">
+        <div class="cloud">
+          <div class="cloud-text">☁️</div>
+        </div>
+      </div>
+
+      <div class="error-code">404</div>
+      <h1>Page Not Found</h1>
+      <p>
+        Oops! Looks like this resource has been terminated. The page you're
+        looking for doesn't exist in this availability zone.
+      </p>
+
+      <a href="/" class="btn-home">Return to Home</a>
+
+      <div class="links">
+        <a href="/">Home</a>
+        <a href="/#skills">Skills</a>
+        <a href="/#projects">Projects</a>
+        <a href="/#contact">Contact</a>
+      </div>
+    </div>
+  </body>
+</html>
