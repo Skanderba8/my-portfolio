@@ -196,11 +196,12 @@
         background-clip: padding-box;
         position: relative;
         overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-secondary);
-        font-size: 1.2rem;
+      }
+
+      .profile-pic img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .profile-pic::before {
@@ -444,7 +445,12 @@
           </div>
         </div>
         <div class="hero-image">
-          <div class="profile-pic">Your Photo Here</div>
+          <div class="profile-pic">
+            <img
+              src="https://skander-portfolio-bucket2026.s3.eu-west-1.amazonaws.com/profile.jpeg"
+              alt="Your Name - Cloud Engineer"
+            />
+          </div>
         </div>
       </div>
     </section>
