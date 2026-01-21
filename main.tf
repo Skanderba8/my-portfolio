@@ -52,6 +52,10 @@ resource "aws_s3_object" "index" {
   key          = "index.html"
   source       = "index.html"
   content_type = "text/html"
+  etag         = filemd5("index.html")
+
+  # Prevent browser caching to ensure updates are visible
+  cache_control = "no-cache, no-store, must-revalidate"
 }
 
 resource "aws_s3_object" "error" {
@@ -59,12 +63,18 @@ resource "aws_s3_object" "error" {
   key          = "error.html"
   source       = "error.html"
   content_type = "text/html"
+  etag         = filemd5("error.html")
+
+  # Prevent browser caching to ensure updates are visible
+  cache_control = "no-cache, no-store, must-revalidate"
 }
 
 resource "aws_s3_object" "profile" {
-  bucket = aws_s3_bucket.mybucket.id
-  key    = "profile.jpeg"
-  source = "profile.jpeg"
+  bucket        = aws_s3_bucket.mybucket.id
+  key           = "profile.jpeg"
+  source        = "profile.jpeg"
+  etag          = filemd5("profile.jpeg")
+  cache_control = "public, max-age=3600"
 }
 
 # Website configuration
